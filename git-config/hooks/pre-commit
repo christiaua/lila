@@ -1,0 +1,14 @@
+#!/bin/bash
+
+branch_name="$(git rev-parse --abbrev-ref HEAD)"
+
+valid_regex="^(feature|bugfix|improvement|release|hotfix)\/[a-z0-9._-]+$"
+
+
+if [[ ! $branch_name =~ $valid_regex ]]
+then
+    echo "Commit rejected. Branch names must start with either (feature|bugfix|improvement|release|hotfix) following by "/" and then lowercase letters or numbers. Please try again with a valid branch name."
+    exit 1
+fi
+
+exit 0

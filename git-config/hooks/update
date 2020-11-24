@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+if [ "$(git branch Develop --contains newrev | wc -l)" -eq 0 ]; then
+    echo "ERROR: Please commit to Develop branch first before merging"
+    exit 1
+fi
+exit 0
